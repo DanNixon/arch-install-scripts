@@ -62,7 +62,8 @@ pacstrap "$TARGET_DIR" \
   iptables-nft \
   linux-lts \
   openssh \
-  parted
+  parted \
+  python
 
 # Generate fstab
 genfstab -U /mnt >> /mnt/etc/fstab
