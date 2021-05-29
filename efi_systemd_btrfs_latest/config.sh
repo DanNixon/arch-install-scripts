@@ -12,24 +12,39 @@ echo "$HOSTNAME" > /etc/hostname
 sed -i 's/HOOKS=.*/HOOKS=(base udev autodetect modconf block filesystems keyboard fsck btrfs)/' /etc/mkinitcpio.conf
 mkinitcpio -P
 
-# Install GRUB
-mkdir -p /boot/grub
-grub-mkconfig -o /boot/grub/grub.cfg
-grub-install --target=i386-pc "$DISK"
+# Install bootloader
+bootctl --path=/boot install
+
+# Configure bootloader
+cat > /boot/loader/loader.conf <<EOF
+default arch.conf
+timeout 3
+console-mode max
+editor no
+EOF
+
+# Configure OS bootloader entry
+cat > /boot/loader/entries/arch.conf <<EOF
+title Arch Linux
+linux /vmlinuz-linux
+initrd /amd-ucode.img
+initrd /intel-ucode.img
+initrd /initramfs-linux.img
+options root=${DISK}2 rootflags=subvol=@root rw
+EOF
 
 # Disable root password login
 passwd -d root
 passwd -l root
 
-# Add automation user
+# Add user
 useradd \
-  --comment 'User for automatic provisioning' \
   --password "$(openssl passwd -6 'please_change_me_i_am_not_safe')" \
   --user-group \
   --create-home \
   automation
 
-# Make automation user a sudoer
+# Make user a sudoer
 echo 'automation ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers.d/automation
 chmod u=r,g=r,o= /etc/sudoers.d/automation
 
