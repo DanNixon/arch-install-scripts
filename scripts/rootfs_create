@@ -1,0 +1,32 @@
+#!/bin/bash
+
+part="$1"
+
+# Create Btrfs filesystem
+mkfs.btrfs --force -L archroot "$part"
+
+# Mount Btrfs root
+mount "$part" /mnt
+
+# Create subvolumes
+btrfs subvolume create /mnt/@root
+btrfs subvolume create /mnt/@home
+btrfs subvolume create /mnt/@var_log
+btrfs subvolume create /mnt/@snapshots
+
+# Unmount Btrfs root
+umount /mnt
+
+# Mount root subvolume
+mount -o compress=zstd,subvol=@root "$part" /mnt
+
+# Create mountpoints for additional subvolumes
+mkdir -p \
+  /mnt/home \
+  /mnt/var/log \
+  /mnt/.snapshots
+
+# Mount additional subvolumes
+mount -o compress=zstd,subvol=@home "$part" /mnt/home
+mount -o compress=zstd,subvol=@var_log "$part" /mnt/var/log
+mount -o compress=zstd,subvol=@snapshots "$part" /mnt/.snapshots

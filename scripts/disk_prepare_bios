@@ -1,0 +1,11 @@
+#!/bin/bash
+
+disk="$1"
+
+# BIOS partition
+sgdisk --new=1:0:+1M "$disk"
+sgdisk --typecode=1:ef02 "$disk"
+
+# Root partition
+sgdisk --largest-new=2 "$disk"
+sgdisk --typecode=2:8304 "$disk"

@@ -1,0 +1,9 @@
+#!/bin/bash
+
+disk="$1"
+
+# Clear partition table
+sgdisk --zap "$disk"
+
+# Destroy magic strings and signatures
+wipefs --all "$disk"

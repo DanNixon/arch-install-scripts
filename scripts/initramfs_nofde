@@ -1,0 +1,4 @@
+#!/bin/bash
+
+sed -i 's/HOOKS=.*/HOOKS=(base udev autodetect modconf block filesystems keyboard fsck btrfs)/' /etc/mkinitcpio.conf
+mkinitcpio -P

@@ -1,0 +1,6 @@
+#!/bin/bash
+
+username="$1"
+
+echo "$username ALL=(ALL) : ALL" >> "/etc/sudoers.d/$username"
+chmod u=r,g=r,o= "/etc/sudoers.d/$username"

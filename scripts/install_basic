@@ -1,0 +1,17 @@
+#!/bin/bash
+
+pacstrap /mnt \
+  amd-ucode \
+  base \
+  base-devel \
+  btrfs-progs \
+  git \
+  grub \
+  gptfdisk \
+  intel-ucode \
+  iptables-nft \
+  linux-firmware \
+  openssh \
+  parted \
+  python \
+  "$1"

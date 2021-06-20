@@ -1,0 +1,6 @@
+#!/bin/bash
+
+part="$1"
+
+mkdir -p /mnt/boot
+mount "$part" /mnt/boot
