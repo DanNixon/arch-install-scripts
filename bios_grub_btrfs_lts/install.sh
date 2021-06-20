@@ -54,11 +54,13 @@ curl -s "$MIRRORLIST" | sed 's/^#Server/Server/' > /etc/pacman.d/mirrorlist
 
 # Install
 pacstrap "$TARGET_DIR" \
+  amd-ucode \
   base \
   base-devel \
   btrfs-progs \
   grub \
   gptfdisk \
+  intel-ucode \
   iptables-nft \
   linux-lts \
   openssh \
