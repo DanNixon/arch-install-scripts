@@ -2,9 +2,7 @@
 
 set -ex
 
-PATH="$(dirname $(realpath $0))/../scripts:$PATH"
-
-disk='/dev/sda'
+PATH="$(dirname "$(realpath "$0")")/../scripts:$PATH"
 
 set_hostname 'archymcarchface'
 

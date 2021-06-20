@@ -2,7 +2,7 @@
 
 set -ex
 
-PATH="$(dirname $(realpath $0))/../scripts:$PATH"
+PATH="$(dirname "$(realpath "$0")")/../scripts:$PATH"
 
 disk='/dev/sda'
 
