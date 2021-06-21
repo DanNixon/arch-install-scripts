@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -ex
+
 useradd \
   --password "$(openssl passwd -6 'please_change_me_i_am_not_safe')" \
   --user-group \

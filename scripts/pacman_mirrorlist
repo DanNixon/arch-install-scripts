@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -ex
+
 MIRRORLIST='https://archlinux.org/mirrorlist/?country=GB&protocol=http&protocol=https&ip_version=4&use_mirror_status=on'
 
 curl -s "$MIRRORLIST" | sed 's/^#Server/Server/' > /etc/pacman.d/mirrorlist

@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -ex
+
 pacstrap /mnt \
   amd-ucode \
   base \

@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -ex
+
 bootctl --path=/boot install
 
 cat > /boot/loader/loader.conf <<EOF

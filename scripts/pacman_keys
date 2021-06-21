@@ -1,4 +1,6 @@
 #!/bin/bash
 
+set -ex
+
 pacman-key --init
 pacman-key --populate archlinux

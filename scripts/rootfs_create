@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -ex
+
 part="$1"
 
 # Create Btrfs filesystem
