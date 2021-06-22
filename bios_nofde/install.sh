@@ -15,6 +15,6 @@ rootfs_create "$root_part"
 
 pacman_mirrorlist
 
-install_basic 'linux-lts'
+install_basic 'linux'
 
 generate_fstab
