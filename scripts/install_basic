@@ -13,6 +13,7 @@ pacstrap /mnt \
   intel-ucode \
   iptables-nft \
   linux-firmware \
+  neovim \
   openssh \
   parted \
   python \
