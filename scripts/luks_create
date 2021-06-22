@@ -1,0 +1,16 @@
+#!/bin/bash
+
+set -ex
+
+part="$1"
+name="$2"
+
+cryptsetup \
+  --cipher aes-xts-plain64 \
+  --hash sha512 \
+  --use-random \
+  --verify-passphrase \
+  luksFormat \
+  "$part"
+
+cryptsetup luksOpen "$part" "$name"
