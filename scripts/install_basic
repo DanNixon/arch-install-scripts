@@ -8,7 +8,6 @@ pacstrap /mnt \
   base-devel \
   btrfs-progs \
   git \
-  grub \
   gptfdisk \
   intel-ucode \
   iptables-nft \
