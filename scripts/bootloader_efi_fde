@@ -2,6 +2,9 @@
 
 set -ex
 
+kernel="$1"
+disk="$2"
+
 bootctl --path=/boot install
 
 cat > /boot/loader/loader.conf <<EOF
@@ -11,13 +14,13 @@ console-mode max
 editor no
 EOF
 
-uuid="$(blkid -s UUID -o value "${1}2")"
+uuid="$(blkid -s UUID -o value "${disk}2")"
 
 cat > /boot/loader/entries/arch.conf <<EOF
 title Arch Linux
-linux /vmlinuz-linux
+linux /vmlinuz-${kernel}
 initrd /amd-ucode.img
 initrd /intel-ucode.img
-initrd /initramfs-linux.img
+initrd /initramfs-${kernel}.img
 options cryptdevice=UUID=${uuid}:luks:allow-discards root=/dev/mapper/luks rootflags=subvol=@root rd.luks.options=discard rw
 EOF
