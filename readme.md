@@ -2,6 +2,12 @@
 
 [![Code Quality](https://github.com/DanNixon/arch_install_scripts/actions/workflows/code_quality.yml/badge.svg?branch=main)](https://github.com/DanNixon/arch_install_scripts/actions/workflows/code_quality.yml)
 
+Bare minimum [Arch Linux](https://archlinux.org/) installation scripts.
+Intended to create a system provisioned just enough to then be configured via [Ansible](https://www.ansible.com/).
+
+Tested with [official Arch Linux](https://archlinux.org/) and [Arch Linux 32](https://archlinux32.org/).
+Note that `pacman_mirrorlist` and `pacman_keys` steps can (and should) be omitted for Arch Linux 32.
+
 ## Instructions
 
 - Setup
