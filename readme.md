@@ -13,6 +13,8 @@ Note that `pacman_mirrorlist` and `pacman_keys` steps can (and should) be omitte
 - Setup
   - Boot live environment
   - `timedatectl set-ntp true`
+  - `pacman-key --init`
+  - `pacman-key --populate archlinux` (or `archlinux32`)
   - `pacman -Sy git`
 - Installation
   - `git clone https://github.com/DanNixon/arch_install_scripts`
@@ -20,9 +22,12 @@ Note that `pacman_mirrorlist` and `pacman_keys` steps can (and should) be omitte
   - `./install.sh`
 - Configuration
   - `arch-chroot /mnt`
+  - `cd`
   - `git clone https://github.com/DanNixon/arch_install_scripts`
   - Make necessary changes to configuration stage
   - `./config.sh`
+  - `cd`
+  - `rm -rf arch_install_scripts`
 - Finish
   - `exit`
   - `reboot`
