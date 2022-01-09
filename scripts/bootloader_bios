@@ -2,7 +2,7 @@
 
 set -ex
 
-pacman -Syu grub
+pacman --noconfirm -Syu grub
 
 mkdir -p /boot/grub
 grub-mkconfig -o /boot/grub/grub.cfg
