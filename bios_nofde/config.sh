@@ -7,7 +7,7 @@ PATH="$(dirname "$(realpath "$0")")/../scripts:$PATH"
 set_hostname 'archymcarchface'
 
 initramfs_nofde
-bootloader_bios '/dev/sda'
+bootloader_grub_bios_nofde '/dev/sda'
 
 disable_root_login_via_password
 

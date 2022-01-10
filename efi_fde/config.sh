@@ -10,7 +10,7 @@ root_part="${disk}2"
 set_hostname 'archymcarchface'
 
 initramfs_fde
-bootloader_efi_fde 'linux' "$root_part"
+bootloader_sd_efi_fde 'linux' "$root_part"
 
 disable_root_login_via_password
 
