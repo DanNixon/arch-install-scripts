@@ -1,0 +1,24 @@
+#!/bin/bash
+
+set -ex
+
+kernel="$1"
+root_part="$2"
+
+pacman --noconfirm -Syu \
+  efibootmgr \
+  grub
+
+uuid="$(blkid -s UUID -o value "$root_part")"
+sed -i \
+  "s/GRUB_CMDLINE_LINUX=\".*\"/GRUB_CMDLINE_LINUX=\"cryptdevice=UUID=${uuid}:luks:allow-discards root=\/dev\/mapper\/luks rootflags=subvol=@root rd.luks.options=discard\"/g" \
+  /etc/default/grub
+
+mkdir -p /boot/grub
+grub-mkconfig -o /boot/grub/grub.cfg
+
+grub-install \
+  --target=i386-efi \
+  --efi-directory=/boot \
+  --bootloader-id=GRUB \
+  "$kernel"
