@@ -3,13 +3,14 @@
 set -ex
 
 disk="$1"
+efi_part="$2"
 
 # EFI/boot partition
 sgdisk --new=1:0:+512M "$disk"
 sgdisk --typecode=1:ef00 "$disk"
 
 # EFI/boot filesystem
-mkfs.vfat -F 32 -n EFI "${disk}1"
+mkfs.vfat -F 32 -n EFI "$efi_part"
 
 # Root partition
 sgdisk --largest-new=2 "$disk"

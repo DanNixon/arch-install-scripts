@@ -3,7 +3,7 @@
 set -ex
 
 kernel="$1"
-disk="$2"
+root_part="$2"
 
 bootctl --path=/boot install
 
@@ -20,5 +20,5 @@ linux /vmlinuz-${kernel}
 initrd /amd-ucode.img
 initrd /intel-ucode.img
 initrd /initramfs-${kernel}.img
-options root=${disk}2 rootflags=subvol=@root rw
+options root=$root_part rootflags=subvol=@root rw
 EOF

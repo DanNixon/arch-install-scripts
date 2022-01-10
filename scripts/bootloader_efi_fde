@@ -3,7 +3,7 @@
 set -ex
 
 kernel="$1"
-disk="$2"
+root_part="$2"
 
 bootctl --path=/boot install
 
@@ -14,7 +14,7 @@ console-mode max
 editor no
 EOF
 
-uuid="$(blkid -s UUID -o value "${disk}2")"
+uuid="$(blkid -s UUID -o value "$root_part")"
 
 cat > /boot/loader/entries/arch.conf <<EOF
 title Arch Linux
