@@ -28,6 +28,7 @@ Note that `pacman_mirrorlist` and `pacman_keys` steps can (and should) be omitte
   - `./config.sh`
   - `cd`
   - `rm -rf arch_install_scripts`
+  - Do anything else relevant inside the chroot (e.g. set user passwords)
 - Finish
   - `exit`
   - `reboot`
