@@ -12,7 +12,7 @@ disk_clear "$disk"
 disk_prepare_efi "$disk" "$efi_part"
 
 rootfs_create "$root_part"
-efifs_mount "$efi_part"
+boot_mount "$efi_part"
 
 pacman_mirrorlist
 

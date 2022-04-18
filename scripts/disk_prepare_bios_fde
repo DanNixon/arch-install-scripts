@@ -1,0 +1,21 @@
+#!/bin/bash
+
+set -ex
+
+disk="$1"
+boot_part="${disk}2"
+
+# BIOS partition
+sgdisk --new=1:0:+1M "$disk"
+sgdisk --typecode=1:ef02 "$disk"
+
+# Boot partition
+sgdisk --new=2:0:+256M "$disk"
+sgdisk --typecode=2:8304 "$disk"
+
+# Boot filesystem
+mkfs.ext4 "$boot_part"
+
+# Root partition
+sgdisk --largest-new=3 "$disk"
+sgdisk --typecode=2:8304 "$disk"

@@ -4,16 +4,16 @@ set -ex
 
 PATH="$(dirname "$(realpath "$0")")/../scripts:$PATH"
 
-disk='/dev/mmcblk2'
-efi_part="${disk}p1"
-root_part="${disk}p2"
+disk='/dev/sda'
+boot_part="${disk}2"
+root_part="${disk}3"
 
 disk_clear "$disk"
-disk_prepare_efi "$disk" "$efi_part"
+disk_prepare_bios_fde "$disk"
 
 luks_create "$root_part" root
 rootfs_create '/dev/mapper/root'
-boot_mount "$efi_part"
+boot_mount "$boot_part"
 
 pacman_mirrorlist
 

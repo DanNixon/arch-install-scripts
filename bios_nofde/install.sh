@@ -8,7 +8,7 @@ disk='/dev/sda'
 root_part="${disk}2"
 
 disk_clear "$disk"
-disk_prepare_bios "$disk"
+disk_prepare_bios_nofde "$disk"
 
 rootfs_create "$root_part"
 

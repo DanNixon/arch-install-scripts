@@ -13,7 +13,7 @@ disk_prepare_efi "$disk" "$efi_part"
 
 luks_create "$root_part" root
 rootfs_create '/dev/mapper/root'
-efifs_mount "$efi_part"
+boot_mount "$efi_part"
 
 pacman_mirrorlist
 

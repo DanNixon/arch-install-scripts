@@ -2,8 +2,10 @@
 
 set -ex
 
+disk="$1"
+
 pacman --noconfirm -Syu grub
 
 mkdir -p /boot/grub
 grub-mkconfig -o /boot/grub/grub.cfg
-grub-install --target=i386-pc "$1"
+grub-install --target=i386-pc "$disk"
